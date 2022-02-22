@@ -1,11 +1,11 @@
 public class PizzaOrder {
     public String title;
-    public enum Size{ SMALL, MEDIUM, BIG }
+    public String size;
     public Boolean sauce;
     public String address;
     public Boolean orderAccepted;
 
-    public PizzaOrder(String t, Boolean s, String a) {
+    public PizzaOrder(String t, SizeType size, Boolean s, String a) {
         title = t;
         sauce = s;
         address = a;
@@ -33,12 +33,12 @@ public class PizzaOrder {
     public String toString() {
         String need = "без соуса";
         String accepted = "Заказ принят. ";
-    //    if (sauce){
-    //        need = "с соусом";
-    //    }
-    //    if (order){
-    //        accepted = "Поступил заказ. ";
-    //    }
+        if (sauce){
+            need = "с соусом";
+        }
+        if (order()){
+            accepted = "Поступил заказ. ";
+        }
         return accepted + title + ", " + need + " на адрес " + address;
     }
 }

@@ -18,9 +18,18 @@ public class Phone {
         number = n;
         model = m;
     }
-    public Phone(){    }
-    public void sendMessage () {
-        System.out.println("Номера телефонов:");
+    public Phone(){ }
+    public void sendMessage (String[] numbers) {
+        String [] a = numbers;
+        System.out.print("Сообщение отправлено номерам: ");
+        for (int j = 0; j < a.length; j++){
+            if (j != a.length - 1) {
+                System.out.print(a[j] + ", ");
+            } else{
+                System.out.print(a[j]);
+            }
+        }
+        System.out.println();
     }
     public String toString () {
         return number + ", " + model + ", " + weight;
