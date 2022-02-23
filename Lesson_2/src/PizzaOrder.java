@@ -1,14 +1,15 @@
 public class PizzaOrder {
     public String title;
-    public String size;
+    public SizeType size;
     public Boolean sauce;
     public String address;
     public Boolean orderAccepted;
 
-    public PizzaOrder(String t, SizeType size, Boolean s, String a) {
-        title = t;
-        sauce = s;
-        address = a;
+    public PizzaOrder(String title, SizeType size, Boolean sause, String address) {
+        this.title = title;
+        this.size = size;
+        this.sauce = sause;
+        this.address = address;
     }
     public Boolean order() {
         String Need = "без соуса";
