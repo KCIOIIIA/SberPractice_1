@@ -5,6 +5,5 @@ public abstract class Figure implements Drawable {
         this.point = point;
     }
     public abstract double area();
-
     public abstract double perimeter();
 }
