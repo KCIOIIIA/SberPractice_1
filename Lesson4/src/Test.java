@@ -9,8 +9,10 @@
 public class Test {
     public static void main(String[] args){
         BankOnline bankOnline = new BankOnline();
+        BankOnline card = new BankOnline();
         try{
             bankOnline.send("1231123112311231", 1000.00);
+            card.send("1971518106013457", 61200.21);
         } catch (InvalidCardNumberException exception){
             System.err.println("Проверьте правильность ввода карты");
         } catch (BlockCardsException exception){

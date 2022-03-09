@@ -18,7 +18,7 @@ public class BankOnline {
         }
 
         try {
-            File file = new File("D:\BlockCards.txt");
+            File file = new File("D:\\SperPractice1\\BlockCards.txt");
             FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
@@ -26,7 +26,6 @@ public class BankOnline {
                 throw new BlockCardsException("Перевод на заблокированную карту");
             }
             while (line != null) {
-                System.out.println(line);
                 line = reader.readLine();
                 if (cardNumber == line){
                     throw new BlockCardsException("Перевод на заблокированную карту");
@@ -39,13 +38,13 @@ public class BankOnline {
         }
 
         if (money < 0) {
-            throw new NegativeSummaExeption("Введена отрицательная сумма");
+            throw new NegativeSummaException("Введена отрицательная сумма");
         }
         if (money > 50000) {
-            throw new LimitMoneyExeption("Превышен лимит карты");
+            throw new LimitMoneyException("Превышен лимит карты");
         }
         if ((money == 0) || cardNumber.equals("")){
-            throw new NullArgExeption("Один из аргументов равен null");
+            throw new NullArgException("Один из аргументов равен null");
         }
 
         System.out.println("Операция прошла успешно");
