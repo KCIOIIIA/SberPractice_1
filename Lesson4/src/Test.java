@@ -1,10 +1,10 @@
-package com.jc.exception;
+//package com.jc.exception;
 
-import com.jc.exception.bank.BankOnline;
-import com.jc.exception.exception.InvalidCardNumberException;
-import com.jc.exception.exception.NegativeSummaException;
-import com.jc.exception.exception.LimitMoneyException;
-import com.jc.exception.exception.NullArgException;
+//import com.jc.exception.bank.BankOnline;
+//import com.jc.exception.exception.InvalidCardNumberException;
+//import com.jc.exception.exception.NegativeSummaException;
+//import com.jc.exception.exception.LimitMoneyException;
+//import com.jc.exception.exception.NullArgException;
 
 public class Test {
     public static void main(String[] args){
@@ -13,6 +13,8 @@ public class Test {
             bankOnline.send("1231123112311231", 1000.00);
         } catch (InvalidCardNumberException exception){
             System.err.println("Проверьте правильность ввода карты");
+        } catch (BlockCardsException exception){
+            System.err.println("Невозможен перевод на заблокированную карту");
         } catch (NegativeSummaException exception){
             System.err.println("Введена отрицательная сумма перевода");
         } catch (LimitMoneyException exception){
