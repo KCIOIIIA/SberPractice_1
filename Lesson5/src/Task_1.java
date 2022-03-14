@@ -8,9 +8,7 @@ public class Task_1 {
                 new File("C:/SberPractice_1/Lesson5/src/CopyBorodino.txt");
 
         file.createNewFile();
-
         FileWriter writer = new FileWriter(file);
-
         try(FileReader reader =
                     new FileReader("C:/SberPractice_1/Lesson5/src/Borodino.txt")) {
             int c;

@@ -13,7 +13,5 @@ public class Task_3 {
             Character character = (Character) objectInputStream.readObject();
             System.out.println(character);
         }
-
-
     }
 }
