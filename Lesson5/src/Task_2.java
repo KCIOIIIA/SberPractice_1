@@ -4,13 +4,12 @@ import java.io.*;
 
 public class Task_2 {
     public static void main(String[] args) throws IOException {
-        File file =
-                new File("C:/SberPractice_1/Lesson5/src/CopylistNames.txt");
-        file.createNewFile();
-        FileWriter writer = new FileWriter(file);
-        try (FileReader reader =
-                     new FileReader("C:/SberPractice_1/Lesson5/src/listNames.txt")) {
-            int c, i, j, k;
+        try (BufferedReader fileInputStream =
+                     new BufferedReader(
+                             new FileReader("C:/SberPractice_1/Lesson5/src/listNames.txt"));
+             PrintWriter fileOutputStream =
+                     new PrintWriter(new FileWriter("C:/SberPractice_1/Lesson5/src/CopylistNames.txt"))) {
+            int i, j, k, c;
             int t = 11;
             int[][] a = new int[t][t];
             for (i = 0; i < t; i++) {
@@ -18,17 +17,21 @@ public class Task_2 {
                     a[i][j] = 0;
                 }
             }
-            i = 0;            j = 0;            k = 0;
-            while ((c = reader.read()) != -1) {
+            i = 0;
+            j = 0;
+            k = 0;
+            while ((c = fileInputStream.read()) != -1) {
                 if ((c != 32) & (c != 44)) {
-                        a[i][j] = c;
-                        j = j + 1;
-                        k = 0;
+                    a[i][j] = c;
+                    j = j + 1;
+                    k = 0;
+                } else {
+                    k = k + 1;
+                    if (k == 1) {
+                        i = i + 1;
+                    }
+                    j = 0;
                 }
-                else {  k = k + 1;
-                    if (k == 1){
-                        i = i + 1;}
-                    j = 0;}
             }
 
             int b, h;
@@ -40,26 +43,25 @@ public class Task_2 {
                             k = k + 1;
                         }
                     }
-                    if ((a[i][k] < a[j][k] & (i != j))){
+                    if ((a[i][k] < a[j][k] & (i != j))) {
                         for (h = 0; h < t; h++) {
                             b = a[i][h];
                             a[i][h] = a[j][h];
-                            a[j][h] = b;}
+                            a[j][h] = b;
+                        }
                     }
                 }
             }
             String S;
-            S = "";
             for (i = 0; i < t; i++) {
+                S = "";
                 for (j = 0; j < t; j++) {
                     if (a[i][j] != 0) {
                         S = S + (char) a[i][j];
-                        writer.write((char) a[i][j]);
-                        writer.flush();
                     }
                 }
+                fileOutputStream.println(S);
             }
-            writer.close();
         }
         catch(IOException e) {
             System.out.print(e.getMessage());

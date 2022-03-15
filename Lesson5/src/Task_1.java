@@ -11,9 +11,13 @@ public class Task_1 {
         FileWriter writer = new FileWriter(file);
         try(FileReader reader =
                     new FileReader("C:/SberPractice_1/Lesson5/src/Borodino.txt")) {
-            int c;
+            int c, k;
+            k = 0;
             while ((c = reader.read()) != -1){
-                if ((c != 32)){
+                if (c != 32){
+                    k = 0;}
+                else {k = k + 1;}
+                if (k <= 1){
                     writer.write((char) c);
                     writer.flush();
                 }

@@ -6,12 +6,12 @@ import java.io.ObjectInputStream;
 public class Task_3 {
     public static void main (String[] args) throws IOException, ClassNotFoundException{
         try (FileInputStream fileInputStream
-                     = new FileInputStream("C:/SberPractice_1/Lesson5/src/Character_1.txt");
+                     = new FileInputStream("C:/SberPractice_1/Lesson5/src/Olly.txt");
              ObjectInputStream objectInputStream
                      = new ObjectInputStream(fileInputStream)
                 ) {
-            Character character = (Character) objectInputStream.readObject();
-            System.out.println(character);
+            Pets pets = (Pets) objectInputStream.readObject();
+            System.out.println(pets);
         }
     }
 }
