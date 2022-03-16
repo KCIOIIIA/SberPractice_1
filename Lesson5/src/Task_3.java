@@ -10,7 +10,6 @@ public class Task_3 {
             Pets olly = new Pets("Olly", 10, new Black(), new Green());
             objectOutputStream.writeObject(olly);
             System.out.println(olly);
-
             Pets pets = (Pets) objectInputStream.readObject();
             System.out.println(pets);
         }
