@@ -1,15 +1,16 @@
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class Task_3 {
     public static void main (String[] args) throws IOException, ClassNotFoundException{
-        try (FileInputStream fileInputStream
-                     = new FileInputStream("C:/SberPractice_1/Lesson5/src/Olly.txt");
+        try (ObjectOutputStream objectOutputStream
+                     = new ObjectOutputStream(new FileOutputStream("C:/SberPractice_1/Lesson5/src/Olly.txt"));
              ObjectInputStream objectInputStream
-                     = new ObjectInputStream(fileInputStream)
+                     = new ObjectInputStream(new FileInputStream("C:/SberPractice_1/Lesson5/src/Olly.txt"));
                 ) {
+            Pets olly = new Pets("Olly", 10, new Black(), new Green());
+            objectOutputStream.writeObject(olly);
+            System.out.println(olly);
+
             Pets pets = (Pets) objectInputStream.readObject();
             System.out.println(pets);
         }
