@@ -23,7 +23,7 @@ public class UtilClass {
      * @param list список
      * @return последний элемент в коллекции
      */
-    public static <E> Object getLastElem(List <E> list) throws IllegalArgumentException {
+    public static <E> E getLastElem(List <E> list) throws IllegalArgumentException {
         if (list != null) {
             return list.get(list.size() - 1);}
         return null;
@@ -106,20 +106,18 @@ public class UtilClass {
      * @param list2 второй список
      * @return сумма чисел.
      */
-    public static double sum(List<Double extends Number> list1, List<Double extends Number> list2) throws IllegalArgumentException{
-        if ((list1 != null)&(list2 != null)){
-            double s;
-            int i1, i2;
-            i1 = list1.size();
-            i2 = list2.size();
-            s = 0;
-            while ((i1 >= 0)&(i2 >= 0)) {
-                s = list1.get(i1) + list2.get(i2);
-                i1 = i1 - 1;
-                i2 = i2 - 1;
-            }
-            return s;
+    public static double sum(List<? extends Number> list1, List<? extends Number> list2) {
+        if (list1 == null || list2 == null) {
+            throw new IllegalArgumentException();
         }
-        return 0;
+        double res = 0;
+        list1.stream();
+        for (Number number : list1) {
+            res += number.doubleValue();
+        }
+        for (Number number : list2) {
+            res += number.doubleValue();
+        }
+        return res;
     }
 }
