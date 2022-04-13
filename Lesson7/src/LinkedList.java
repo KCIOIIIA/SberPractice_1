@@ -19,19 +19,14 @@ public class LinkedList implements List, Deque {
 
     @Override
     public boolean contains(Object item) {
-        Node node = new Node();
-        node.item = item;
-
-        if (first == null){
-            first = node;
-        } else {
-            last.next = node;
-            node.prev = last;
+        Node node = first;
+        while (node != null) {
+            if (node.item.equals(item)) {
+                return true;
+            }
+            node = node.next;
         }
-        last = node;
-        size++;
-        boolean isMatch = false;
-        return isMatch;
+        return false;
     }
 
     @Override
@@ -52,41 +47,121 @@ public class LinkedList implements List, Deque {
 
     @Override
     public boolean remove(Object item) {
-        return false;
+        Node node = first;
+        boolean isDelete = false;
+        while (node != null) {
+            if (node.item.equals(item)) {
+                node.item = null;
+                isDelete = true;
+                size = size - 1;
+            }
+            node = node.next;
+        }
+        return isDelete;
     }
 
     @Override
     public void clear() {
-
+        Node node = first;
+        int i = 0;
+        while (i <= size) {
+            node.item = null;
+            node = node.next;
+            i++;
+        }
+        size = 0;
     }
 
     @Override
     public void add(int index, Object item) {
+        Node node = new Node();
+        node.item = item;
 
+        if (first == null){
+            first = node;
+        } else {
+            last.next = node;
+            node.prev = last;
+        }
+        last = node;
+        size++;
+        return false;
     }
 
     @Override
     public void set(int index, Object item) {
-
+        Node node = first;
+        int i = 0;
+        if (index == size){
+            addLast(item);
+        } else {
+            while(i < index){
+                i++;
+                node = node.next;
+            }
+            node.item = item;
+        }
     }
 
     @Override
     public Object get(int index) throws IndexOutOfBoundsException {
+        int i = 0;
+        Node node = first;
+        while (i <= index){
+            if (i = index){
+                return node.item;
+            }
+            node = node.next;
+            i++;
+        }
         return null;
     }
 
     @Override
     public int indexOf(Object item) {
-        return 0;
+        int j = -1;
+        Node node = first;
+        boolean isFirst = false;
+        while (i <= size){
+            if ((node.item.equals(item))&(isFirst == false)){
+                j = i;
+                isFirst = true;
+            }
+            node = node.next;
+            i++;
+        }
+        return j;
     }
 
     @Override
     public int lastIndexOf(Object item) {
-        return 0;
+        int j = -1;
+        Node node = first;
+        while (i <= size){
+            if (node.item.equals(item)){
+                j = i;
+            }
+            node = node.next;
+            i++;
+        }
+        return j;
     }
 
     @Override
     public Object remove(int index) throws IndexOutOfBoundsException{
+        Object copyN;
+        Node node = first;
+        int i = 0;
+        while (i <= index) {
+            if (i == index){
+                copyN = node.item;
+                node.item = null;
+                size = size - 1;
+                return copyN;
+            } else
+            {i = i + 1;}
+            node = node.next;
+        }
         return null;
     }
 
@@ -97,22 +172,24 @@ public class LinkedList implements List, Deque {
 
     @Override
     public void addFirst(Object item) {
-
+        add();
+        return null;
     }
 
     @Override
     public void addLast(Object item) {
-
+        Node node = last;
+        return null;
     }
 
     @Override
     public Object getFirst() throws NoSuchElementException{
-        return null;
+        return first.item;
     }
 
     @Override
     public Object getLast() throws NoSuchElementException{
-        return null;
+        return last.item;
     }
 
     @Override

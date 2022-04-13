@@ -21,7 +21,7 @@ public class ArrayList implements List{
     public boolean contains(Object item) {
         boolean isMatch = false;
         for (int i = 0; i < size; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 isMatch = true;
             }
         }
@@ -32,9 +32,7 @@ public class ArrayList implements List{
     public boolean add(Object item) {
         if (size >= capacity){
             capacity = (capacity*3)/2 + 1;
-
             Object[] newArr = new Object[capacity];
-
             for(int i = 0; i < arr.length; i++){
                 newArr[i] = arr[i];
             }
@@ -49,9 +47,10 @@ public class ArrayList implements List{
     public boolean remove(Object item) {
         boolean isDelete = false;
         for (int i = 0; i < size; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 arr[i] = null;
                 isDelete = true;
+                size = size - 1;
             }
         }
         return isDelete;
@@ -62,15 +61,14 @@ public class ArrayList implements List{
         for (int i = 0; i < size; i++) {
             arr[i] = null;
         }
+        size = 0;
     }
 
     @Override
     public void add(int index, Object item) {
         if (size >= capacity){
             capacity = (capacity*3)/2 + 1;
-
             Object[] newArr = new Object[capacity];
-
             for(int i = 0; i < arr.length; i++){
                 newArr[i] = arr[i];
             }
@@ -92,6 +90,7 @@ public class ArrayList implements List{
             add(item);
         } else {
             arr[index] = item;
+            size++;
         }
     }
 
@@ -108,7 +107,7 @@ public class ArrayList implements List{
         int j = -1;
         boolean isFirst = false;
         for (int i = 0; i < size; i++){
-            if ((arr[i] == item)&(isFirst == false)){
+            if ((arr[i].equals(item))&(isFirst == false)){
                 j = i;
                 isFirst = true;
             }
@@ -120,7 +119,7 @@ public class ArrayList implements List{
     public int lastIndexOf(Object item) {
         int j = -1;
         for (int i = 0; i < size; i++){
-            if (arr[i] == item){
+            if (arr[i].equals(item)){
                 j = i;
             }
         }
@@ -135,6 +134,7 @@ public class ArrayList implements List{
             arr[index] = null;
             return copyA;
         }
+        size = size - 1;
         return null;
     }
 
@@ -142,12 +142,19 @@ public class ArrayList implements List{
     public Object[] subList(int from, int to) throws IndexOutOfBoundsException{
         if (size <= capacity){
             Object[] newArr = new Object[to-from];
-
             for(int i = from; i < to; i++){
                 newArr[i] = arr[i];
             }
+            size = to - from;
             return newArr;
         }
         return null;
     }
+    @Override
+    public String toString() {
+        return "ArrayList{" +
+                "arr=" + Arrays.toString(arr) +
+                ", capacity=" + capacity +
+                ", size=" + size +
+                '}';
 }
