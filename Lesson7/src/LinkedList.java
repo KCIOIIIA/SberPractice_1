@@ -132,7 +132,6 @@ public class LinkedList implements List, Deque {
         }
         return j;
     }
-
     @Override
     public int lastIndexOf(Object item) {
         int j = -1;

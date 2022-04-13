@@ -16,7 +16,6 @@ public class ArrayList implements List{
             return false;
         }
     }
-
     @Override
     public boolean contains(Object item) {
         boolean isMatch = false;
