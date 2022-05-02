@@ -11,7 +11,6 @@ public class AllMethods {
         List <Integer> maximum = findTheMost(map);
         System.out.println(maximum);
     }
-
     private static <T, R> List <R> map(List<T> list, Function <T, R> function) {
         List <R> result = new ArrayList<>();
 

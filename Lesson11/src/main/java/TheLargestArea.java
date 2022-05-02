@@ -18,7 +18,6 @@ public class TheLargestArea {
 
         System.out.println(maxarea);
     }
-
     public static List<Rectangle> filterByTheLargestArea(List<Rectangle> rectangles){
         Rectangle maxRec;
         maxRec = rectangles.get(1);

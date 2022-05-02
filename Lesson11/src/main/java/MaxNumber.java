@@ -16,7 +16,6 @@ public class MaxNumber {
 
         System.out.println(maxnumber);
     }
-
     public static List<Integer> filterByMaxNumber(List<Integer> numbers){
         Integer max;
         max = numbers.get(0);

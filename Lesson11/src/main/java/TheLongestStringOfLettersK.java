@@ -18,7 +18,6 @@ public class TheLongestStringOfLettersK {
 
         System.out.println(maxstringK);
     }
-
     public static List<String> filterByTheLongestStringOfLettersK(List<String> stringsK){
         int count, index, index0, max = 0;
         String maxStr = "";

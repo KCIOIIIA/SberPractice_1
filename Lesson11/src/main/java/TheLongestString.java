@@ -15,7 +15,6 @@ public class TheLongestString {
 
         System.out.println(maxstring);
     }
-
     public static List<String> filterByTheLongestString(List<String> strings){
         String max = "";
         for (int i = 0; i < strings.size(); i++){

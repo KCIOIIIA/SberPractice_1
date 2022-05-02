@@ -19,7 +19,6 @@ public class Rectangle {
         Integer i = width * height;
         return i;
     }
-
     public String toString(){
         String str1 = String.valueOf(width);
         String str2 = String.valueOf(height);
