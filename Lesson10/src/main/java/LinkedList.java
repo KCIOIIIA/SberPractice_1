@@ -85,7 +85,6 @@ public class LinkedList implements List, Deque {
         }
         last = node;
         size++;
-        return false;
     }
 
     @Override
@@ -108,7 +107,7 @@ public class LinkedList implements List, Deque {
         int i = 0;
         Node node = first;
         while (i <= index){
-            if (i = index){
+            if (i == index){
                 return node.item;
             }
             node = node.next;
@@ -120,6 +119,7 @@ public class LinkedList implements List, Deque {
     @Override
     public int indexOf(Object item) {
         int j = -1;
+        int i = 0;
         Node node = first;
         boolean isFirst = false;
         while (i <= size){
@@ -135,6 +135,7 @@ public class LinkedList implements List, Deque {
     @Override
     public int lastIndexOf(Object item) {
         int j = -1;
+        int i = 0;
         Node node = first;
         while (i <= size){
             if (node.item.equals(item)){
@@ -169,25 +170,24 @@ public class LinkedList implements List, Deque {
         return null;
     }
 
+
     @Override
     public void addFirst(Object item) {
-        add();
-        return null;
+
     }
 
     @Override
     public void addLast(Object item) {
-        Node node = last;
-        return null;
+
     }
 
     @Override
-    public Object getFirst() throws NoSuchElementException{
+    public Object getFirst(){
         return first.item;
     }
 
     @Override
-    public Object getLast() throws NoSuchElementException{
+    public Object getLast(){
         return last.item;
     }
 
@@ -202,12 +202,12 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object removeFirst() throws NoSuchElementException{
+    public Object removeFirst() {
         return null;
     }
 
     @Override
-    public Object removeLast() throws NoSuchElementException{
+    public Object removeLast() {
         return null;
     }
 
