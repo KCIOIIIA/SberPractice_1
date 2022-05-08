@@ -1,34 +1,41 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 public class AllMethods {
-    public static void main(String[] args){
-        List<Integer> map = map(List.of("And", "I'm", "feeling", "good"), (String string) -> string.length());
-        System.out.println(map);
+    public static void main(String[] args) {
+        Integer theMostInteger = findTheMost(List.of(50, 1, 100),
+                ((integer1, integer2) -> integer1 > integer2 ? integer1 : integer2));
+        String theMostString = findTheMost(List.of("And", "I'm", "feeling", "good"),
+                (string1, string2) -> string1.length() > string2.length() ? string1 : string2);
+        Rectangle theMostRectangle = findTheMost(List.of(
+                        new Rectangle(10, 20),
+                        new Rectangle(6, 40),
+                        new Rectangle(11, 12)
+                ),
+                (rectangle1, rectangle2) -> rectangle1.area() > rectangle2.area() ? rectangle1 : rectangle2);
+        Traveler theMostTraveler = findTheMost(List.of(
+                        new Traveler(10, 2),
+                        new Traveler(6, 4),
+                        new Traveler(11, 1)
+                ),
+                (traveler1, traveler2) -> traveler1.way() > traveler2.way() ? traveler1 : traveler2);
 
-        List <Integer> maximum = findTheMost(map);
-        System.out.println(maximum);
+        System.out.println(theMostInteger);
+        System.out.println(theMostString);
+        System.out.println(theMostRectangle);
+        System.out.println(theMostTraveler);
     }
-    private static <T, R> List <R> map(List<T> list, Function <T, R> function) {
-        List <R> result = new ArrayList<>();
 
-        for (T t : list){
-            R anotherElem = function.apply(t);
-            result.add(anotherElem);
+    public static  <E> E findTheMost(List <E> elements, FindTheMostFunction <E> function){
+        E max = elements.get(0);
+
+        for (E element : elements) {
+            max = function.max(element, max);
         }
-        return result;
+        return max;
     }
 
-     public static List <Integer> findTheMost(List<Integer> elements){
-        Integer max;
-        max = elements.get(0);
-        for (int i = 0; i < elements.size(); i++){
-            if (max < elements.get(i)){
-                max = elements.get(i);
-            }
-        }
-        return Collections.singletonList(max);
+    @FunctionalInterface
+    public interface FindTheMostFunction <E> {
+        E max(E elem1, E elem2);
     }
 }
