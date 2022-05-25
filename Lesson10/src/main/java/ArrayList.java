@@ -149,11 +149,4 @@ public class ArrayList implements List{
         }
         return null;
     }
-    @Override
-    public String toString() {
-        return "ArrayList{" +
-                "arr=" + Arrays.toString(arr) +
-                ", capacity=" + capacity +
-                ", size=" + size +
-                '}';
 }
